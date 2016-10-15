@@ -34,7 +34,7 @@ configure(javaProjects) {
 
     repositories {
         mavenCentral()
-        maven { url 'http://nexus.tuniu.org/nexus/content/groups/public/' }
+        jcenter { url 'https://plugins.gradle.org/m2/'}
 
     }
     // Ensure that all Gradle-compiled classes are available to Eclipse's
