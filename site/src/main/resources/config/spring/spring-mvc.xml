@@ -20,8 +20,9 @@
     </bean>
     <!-- 控制器映射器和控制器适配器 -->
     <mvc:annotation-driven></mvc:annotation-driven>
-    <!-- 静态资源映射器 -->
-    <mvc:resources mapping="/statics/**" location="/WEB-INF/statics/" />
 
-    <import resource="classpath:config/mybatis/spring-mybatis.xml"/>
+    <mvc:default-servlet-handler />
+    <!-- 静态资源映射器 -->
+    <!--<mvc:resources mapping="/statics/**" location="/WEB-INF/statics/" />-->
+    <!--<import resource="classpath:config/mybatis/spring-mybatis.xml"/>-->
 </beans>
