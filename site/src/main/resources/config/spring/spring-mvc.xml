@@ -10,8 +10,14 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <!-- 自动扫描控制器 -->
-    <context:component-scan base-package="com.txw"/>
+    <!-- 自动扫描且只扫描@Controller -->
+    <context:component-scan base-package="com.txw.controller" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+
+    <!-- 定义首页 -->
+    <mvc:view-controller path="/" view-name="redirect:/login/" />
+
     <!-- 视图渲染 -->
     <bean id="internalResourceViewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">

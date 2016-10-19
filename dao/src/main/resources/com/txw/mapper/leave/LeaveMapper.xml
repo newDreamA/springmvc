@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.txw.dao.leave.LeaveMapper" >
+  <resultMap id="BaseResultMap" type="com.txw.vo.leave.Leave" >
+    <id column="leave_id" property="leaveId" jdbcType="BIGINT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="start_time" property="startTime" jdbcType="TIMESTAMP" />
+    <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
+    <result column="apply_time" property="applyTime" jdbcType="TIMESTAMP" />
+    <result column="leave_type" property="leaveType" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    leave_id, user_id, user_name, start_time, end_time, apply_time, leave_type, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from leave_bill
+    where leave_id = #{leaveId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from leave_bill
+    where leave_id = #{leaveId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.txw.vo.leave.Leave" >
+    insert into leave_bill (leave_id, user_id, user_name, 
+      start_time, end_time, apply_time, 
+      leave_type, remark)
+    values (#{leaveId,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, 
+      #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, #{applyTime,jdbcType=TIMESTAMP}, 
+      #{leaveType,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" useGeneratedKeys="true" keyProperty="leaveId"
+          parameterType="com.txw.vo.leave.Leave" >
+    <selectKey resultType="long" keyProperty="leaveId">
+      select LAST_INSERT_ID()
+    </selectKey>
+    insert into leave_bill
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="leaveId != null" >
+        leave_id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="startTime != null" >
+        start_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+      <if test="applyTime != null" >
+        apply_time,
+      </if>
+      <if test="leaveType != null" >
+        leave_type,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="leaveId != null" >
+        #{leaveId,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyTime != null" >
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveType != null" >
+        #{leaveType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.txw.vo.leave.Leave" >
+    update leave_bill
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null" >
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="applyTime != null" >
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="leaveType != null" >
+        leave_type = #{leaveType,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where leave_id = #{leaveId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.txw.vo.leave.Leave" >
+    update leave_bill
+    set user_id = #{userId,jdbcType=BIGINT},
+      user_name = #{userName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      leave_type = #{leaveType,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where leave_id = #{leaveId,jdbcType=BIGINT}
+  </update>
+</mapper>

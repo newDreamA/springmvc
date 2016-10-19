@@ -70,13 +70,13 @@
 			<tr>
 				<td>请假原因：</td>
 				<td>
-					<textarea name="reason"></textarea>
+					<textarea name="remark"></textarea>
 				</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
 				<td>
-					<button type="submmit">申请</button>
+					<button type="submit">申请</button>
 				</td>
 			</tr>
 		</table>

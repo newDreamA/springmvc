@@ -8,4 +8,8 @@ import com.txw.vo.user.User;
 public interface IUserService {
     void insertUser(User user);
 
+    User getUserInfo(String userName);
+
+    User getLeaderInfo(User info);
+
 }

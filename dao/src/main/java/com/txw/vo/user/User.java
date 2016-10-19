@@ -1,33 +1,43 @@
 package com.txw.vo.user;
 
 public class User {
-    private Integer tId;
+    private Long userId;
 
-    private String tName;
+    private String userName;
 
-    private String tSex;
+    private String userPassword;
 
-    public Integer gettId() {
-        return tId;
+    private Long leaderId;
+
+    public Long getUserId() {
+        return userId;
     }
 
-    public void settId(Integer tId) {
-        this.tId = tId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public String gettName() {
-        return tName;
+    public String getUserName() {
+        return userName;
     }
 
-    public void settName(String tName) {
-        this.tName = tName == null ? null : tName.trim();
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
     }
 
-    public String gettSex() {
-        return tSex;
+    public String getUserPassword() {
+        return userPassword;
     }
 
-    public void settSex(String tSex) {
-        this.tSex = tSex == null ? null : tSex.trim();
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword == null ? null : userPassword.trim();
+    }
+
+    public Long getLeaderId() {
+        return leaderId;
+    }
+
+    public void setLeaderId(Long leaderId) {
+        this.leaderId = leaderId;
     }
 }

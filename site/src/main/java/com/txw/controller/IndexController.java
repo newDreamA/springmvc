@@ -22,7 +22,7 @@ public class IndexController {
         return "index";
     }
 
-    @RequestMapping("/action")
+    @RequestMapping("/index")
     @ResponseBody
     public String action(){
         return "index";
